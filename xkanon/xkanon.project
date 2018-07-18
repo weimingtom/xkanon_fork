@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="xkanon" InternalType="GUI" Version="10.0.0">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
+  <Reconciliation>
+    <Regexes/>
+    <Excludepaths/>
+    <Ignorefiles/>
+    <Extensions>
+      <![CDATA[cpp;c;h;hpp;xrc;wxcp;fbp;cc]]>
+    </Extensions>
+    <Topleveldir>../xkanon</Topleveldir>
+  </Reconciliation>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="anm.cc"/>
+    <File Name="ard.cc"/>
+    <File Name="check_cgm.cc"/>
+    <File Name="file.cc"/>
+    <File Name="game_opt.cc"/>
+    <File Name="image_cursor.cc"/>
+    <File Name="image_di.cc"/>
+    <File Name="image_di_16bpp.cc"/>
+    <File Name="image_di_32bpp.cc"/>
+    <File Name="image_di_impl.cc"/>
+    <File Name="image_di_nobpp.cc"/>
+    <File Name="image_di_seldraw.cc"/>
+    <File Name="image_di_selimpl1.cc"/>
+    <File Name="image_di_selimpl2.cc"/>
+    <File Name="image_di_selimpl3.cc"/>
+    <File Name="image_icon.cc"/>
+    <File Name="image_pdt.cc"/>
+    <File Name="image_stippledef.cc"/>
+    <File Name="image_sys.cc"/>
+    <File Name="initial.cc"/>
+    <File Name="main.cc"/>
+    <File Name="option.cc"/>
+    <File Name="senario.cc"/>
+    <File Name="senario_backlog.cc"/>
+    <File Name="senario_flags.cc"/>
+    <File Name="senario_graphics.cc"/>
+    <File Name="senario_patch.cc"/>
+    <File Name="senario_save.cc"/>
+    <File Name="system.cc"/>
+    <File Name="system_config.cc"/>
+    <File Name="system_graphics.cc"/>
+    <File Name="window.cc"/>
+    <File Name="window_all.cc"/>
+    <File Name="window_menu.cc"/>
+    <File Name="window_name.cc"/>
+    <File Name="window_text.cc"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <File Name="acconfig.h"/>
+    <File Name="anm.h"/>
+    <File Name="ard.h"/>
+    <File Name="config.h"/>
+    <File Name="file.h"/>
+    <File Name="image_cursor.h"/>
+    <File Name="image_di.h"/>
+    <File Name="image_di_Xbpp.h"/>
+    <File Name="image_di_impl.h"/>
+    <File Name="image_di_record.h"/>
+    <File Name="image_di_seldraw.h"/>
+    <File Name="image_pdt.h"/>
+    <File Name="image_sys.h"/>
+    <File Name="initial.h"/>
+    <File Name="senario.h"/>
+    <File Name="senario_backlog.h"/>
+    <File Name="system.h"/>
+    <File Name="typelist.h"/>
+    <File Name="window.h"/>
+    <File Name="window_all.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="contrib">
+    <File Name="contrib/_fake.c"/>
+    <File Name="contrib/music.h"/>
+    <File Name="contrib/system_music.cc"/>
+    <File Name="contrib/koedec_wpd.cc"/>
+    <File Name="contrib/audio.h"/>
+    <File Name="contrib/audioIO.h"/>
+    <File Name="contrib/cdrom.h"/>
+    <File Name="contrib/config.h"/>
+    <File Name="contrib/counter.h"/>
+    <File Name="contrib/kconv.h"/>
+    <File Name="contrib/LittleEndian.h"/>
+    <File Name="contrib/mixer.h"/>
+    <File Name="contrib/portab.h"/>
+    <File Name="contrib/wavfile.h"/>
+  </VirtualDirectory>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="MinGW ( gcc.exe (tdm-1) 5.1.0 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall;-I./include;-DCDROM_LINUX;-DHAVE_CONFIG_H;-fpermissive;-Wno-narrowing;-DDEFAULT_DATAPATH=\&quot;/usr/local/share/xayusys_gtk2/xkanon\&quot;;-DDEFAULT_SAVEPATH=\&quot;~/.xkanon\&quot;;-DDEFAULT_VERSION=1;-DLOCALEDIR=\&quot;/usr/local/share/locale\&quot;" C_Options="-g;-O0;-Wall;-I./include;-DCDROM_LINUX;-DHAVE_CONFIG_H" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-static-libgcc;-static-libstdc++" Required="yes">
+        <LibraryPath Value="./lib"/>
+        <Library Value="gtk-win32-2.0"/>
+        <Library Value="gdk-win32-2.0"/>
+        <Library Value="gdi32"/>
+        <Library Value="imm32"/>
+        <Library Value="shell32"/>
+        <Library Value="ole32"/>
+        <Library Value="uuid"/>
+        <Library Value="pangocairo-1.0"/>
+        <Library Value="pangoft2-1.0"/>
+        <Library Value="harfbuzz"/>
+        <Library Value="m"/>
+        <Library Value="pangowin32-1.0"/>
+        <Library Value="gdi32"/>
+        <Library Value="usp10"/>
+        <Library Value="pango-1.0"/>
+        <Library Value="m"/>
+        <Library Value="atk-1.0"/>
+        <Library Value="cairo"/>
+        <Library Value="z"/>
+        <Library Value="pixman-1"/>
+        <Library Value="fontconfig"/>
+        <Library Value="expat"/>
+        <Library Value="freetype"/>
+        <Library Value="bz2"/>
+        <Library Value="png16"/>
+        <Library Value="z"/>
+        <Library Value="expat"/>
+        <Library Value="freetype"/>
+        <Library Value="bz2"/>
+        <Library Value="png16"/>
+        <Library Value="z"/>
+        <Library Value="gdk_pixbuf-2.0"/>
+        <Library Value="m"/>
+        <Library Value="png16"/>
+        <Library Value="z"/>
+        <Library Value="gio-2.0"/>
+        <Library Value="z"/>
+        <Library Value="gmodule-2.0"/>
+        <Library Value="gobject-2.0"/>
+        <Library Value="ffi"/>
+        <Library Value="glib-2.0"/>
+        <Library Value="intl"/>
+        <Library Value="ws2_32"/>
+        <Library Value="ole32"/>
+        <Library Value="winmm"/>
+        <Library Value="shlwapi"/>
+        <Library Value="pcre"/>
+        <Library Value="intl"/>
+        <Library Value="pcre"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="../Debug/$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)/../bin" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="MinGW ( gcc.exe (tdm-1) 5.1.0 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;-Wall;$(shell pkg-config --cflags gtkmm-2.4)" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <Preprocessor Value="NDEBUG"/>
+      </Compiler>
+      <Linker Options="$(shell pkg-config --libs gtkmm-2.4)" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[
+      ]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
