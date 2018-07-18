@@ -1,0 +1,119 @@
+*** k10/image_di_2bpp.cc	Tue Jul 18 06:18:07 2000
+--- xkanon-beta10/image_di_2bpp.cc	Fri Jul 21 03:48:08 2000
+***************
+*** 62,68 ****
+  	) >> 5;
+  }
+  #else
+! #if 1
+  inline void SetMiddleColor16(char* dest, char* src, int c) {
+  	c &= 0xff;
+  	int dest_pix = *(short*)dest;
+--- 62,68 ----
+  	) >> 5;
+  }
+  #else
+! #if 0
+  inline void SetMiddleColor16(char* dest, char* src, int c) {
+  	c &= 0xff;
+  	int dest_pix = *(short*)dest;
+***************
+*** 1058,1065 ****
+  		unsigned short* line = (unsigned short*)mem;
+  		for (j=0; j<w; j++) {
+  			short col = *line;
+! 			col = ( (col>>11)&0x1f + (col>>6)&0x1f + (col)&0x1f) / 3;
+! 			col = ( (col<<11) | (col<<6) | (col) );
+  			*line++ = col;
+  		}
+  		mem += im.bpl;
+--- 1058,1079 ----
+  		unsigned short* line = (unsigned short*)mem;
+  		for (j=0; j<w; j++) {
+  			short col = *line;
+! 			// col = ( (col>>11)&0x1f + (col>>6)&0x1f + (col)&0x1f) / 3;
+! 			// col = ( (col<<11) | (col<<6) | (col) );
+! 
+! 			// やっぱりこれはいまいちなんで、
+! 			// Y = 0.299R + 0.587G + 0.114B ということで。
+! 			
+! 			// ただし、R,B=5bit, G=6bit ということで、
+! 			// 結果は 31bit になるようにしてみる。
+! 			// ちょっとげたを履かせて明るめに・・・
+! 			int r = (col>>11)&0x1f;
+! 			int g = (col>>5)&0x3f;
+! 			int b = (col)&0x1f;
+! 			int c = r * 20065550 + g * 19696451 + b * 7659419 + 23710710;
+! 			int c2 = c>>25; c >>= 26;
+! 
+! 			col = (c<<11) | (c2<<5) | (c);
+  			*line++ = col;
+  		}
+  		mem += im.bpl;
+diff -c k10/senario.cc xkanon-beta10/senario.cc
+*** k10/senario.cc	Tue Jul 18 08:11:05 2000
+--- xkanon-beta10/senario.cc	Fri Jul 21 03:48:08 2000
+***************
+*** 480,500 ****
+  			p(("cmd 0x19 - 0x04 : wait %d us from base time\n",tm));
+  			p(("                  current time is %d\n",senario.GetTimer() ));
+  #ifndef SUPRESS_WAIT
+! 			for (i=0; i<5; i++) senario.ReadGrp();
+  			while(senario.GetTimer() < tm) {
+! 				senario.ReadGrp();
+  				system.CallProcessMessages();
+! 				system.CallIdleEvent();
+  			}
+  #endif
+  			break;
+  		case 0x06:
+  			index = ReadData();
+  			tm = senario.GetTimer();
+- #ifdef SUPRESS_WAIT
+- 			//tm += 1000000;
+- 			tm += 100000;
+- #endif
+  			flags.SetVar(index, tm);
+  			p(("cmd 0x19 - 0x06 : fbuf[%d] <- time count from base time = %d\n",index, tm));
+  			break;
+--- 480,496 ----
+  			p(("cmd 0x19 - 0x04 : wait %d us from base time\n",tm));
+  			p(("                  current time is %d\n",senario.GetTimer() ));
+  #ifndef SUPRESS_WAIT
+! //			for (i=0; i<5; i++) senario.ReadGrp();
+  			while(senario.GetTimer() < tm) {
+! //				senario.ReadGrp();
+  				system.CallProcessMessages();
+! //				system.CallIdleEvent();
+  			}
+  #endif
+  			break;
+  		case 0x06:
+  			index = ReadData();
+  			tm = senario.GetTimer();
+  			flags.SetVar(index, tm);
+  			p(("cmd 0x19 - 0x06 : fbuf[%d] <- time count from base time = %d\n",index, tm));
+  			break;
+diff -c k10/senario_graphics.cc xkanon-beta10/senario_graphics.cc
+*** k10/senario_graphics.cc	Tue Jul 18 06:18:07 2000
+--- xkanon-beta10/senario_graphics.cc	Fri Jul 21 03:48:07 2000
+***************
+*** 631,636 ****
+--- 631,637 ----
+  				int dest_pdt = decoder.ReadData();
+  				int flag = 0;
+  				if (decoder.Version() == 2) flag = decoder.ReadData(); // new version
++ if (src_pdt == 0) src_pdt=-1;
+  				DoCopy(src_pdt, src_x, src_y, src_x2, src_y2,
+  					dest_pdt, dest_x, dest_y, flag);
+  				Alloc().SaveCopy(src_pdt, src_x, src_y, src_x2, src_y2,
+***************
+*** 720,725 ****
+--- 721,727 ----
+  			int pdt=decoder.ReadData(); int c1=decoder.ReadData(); int c2=decoder.ReadData(); int c3=decoder.ReadData();
+  			p(("cmd 0x68 - 1 : ???  clear window: pdt %d,color = %d, %d, %d\n",pdt,c1,c2,c3));
+  			local_system.ClearPDTBuffer(pdt,c1,c2,c3);
++ 			if (pdt == 0) local_system.ClearPDTBuffer(-1,c1,c2,c3);
+  			break; }
+  	}
+  	return 0;
