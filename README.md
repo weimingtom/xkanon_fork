@@ -6,3 +6,4 @@ My fork of xkanon
 
 ## Test Data
 <pre>[fyd09@古河渚吧][990604]Kanon_初回版</pre>
+**NOTE: KANON_SE not supported**  
