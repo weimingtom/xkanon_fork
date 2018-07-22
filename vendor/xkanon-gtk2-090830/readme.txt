@@ -1,34 +1,34 @@
-http://gametricks.blog40.fc2.com/blog-entry-103.html
+﻿http://gametricks.blog40.fc2.com/blog-entry-103.html
 
-��ǰ����xkanon�ˈ��Ĥ��Ƥ���˽�ϺζȤ�ӥ��&���󥹥ȩ`������餷�Ƥ�����
+以前からxkanonに執心している私は何度もビルド&インストールに挑戦してきた。
 
-���ꥸ�ʥ륽�`����ӥ�ɤ��褦�Ȥ����gtkmm�ιŤ��Щ`���������椷�Ƥ�����
-�Ť�gtkmm������Debian��ԇ�������ΤȤ����ǥӥ�ɤ�����
+オリジナルソースをビルドしようとする→gtkmmの古いバージョンに依存してて死ぬ
+古いgtkmmがあるDebianを試す→他のところでビルドが死ぬ
 
-�ȤĤ餤˼���򤷤Ƥ����ΤǤ�����pkgsrc�˥ݩ`�Ȥ��Ƥ����ˤ����ޤ��ơ������ӥ�ɤ��Ɯ��㤷�Ƥ��ޤ�����
+とつらい思いをしていたのですが、pkgsrcにポートしている人がいまして、それをビルドして満足していました。
 https://github.com/tsutsui/pkgsrc-wip-xkanon
 
-�ǡ��ä��֤��ʹ������˼�ä���Arch��pkgsrc��nbpatch�Υӥ�ɤ�ֹ�ޤ�Ĥ����ʤ���
+で、久しぶりに使おうと思ったらArchでpkgsrcのnbpatchのビルドが止まりつかえない…
 
-�����Ǥʤ�Ȥʤ�����̽���Ƥ����Ȥ�����xkanon-gtk�ʤ��Τ�kҊ��
+そこでなんとなく情報を探していたところ、xkanon-gtkなるものを発見。
 
-���������ߤ���ӛ�ΤϤƥ֤ʤɤ���줹��ˡ��ɤ�����`���`����ѥå��򤤤������m�ä����餷����
+消えた作者の日記のはてブなどから察するに、どうやらユーザーからパッチをいただき適用したらしい。
 
-�Ǥ����Ĥ�ӥ�ɤ��Ƥߤ��Ȥ�����warning�������˳����ΤΥӥ�ɤ����ߤ������`������Ӥ����Τ�PKGBUILD������Ƥߤ�
+でこいつをビルドしてみたところ、warningが大量に出るもののビルドは完走し、ゲームも起動したのでPKGBUILDを書いてみた
 
-��֪�Ά��}�Ȥ��Ƥ�
-?�������ʤ���
-��--enable-alsa���Ƥߤ���;�Фǥե�`�������ꤹ��
-?HiDPI�h�����ȥե���ȥ���������������
-���ɤ��Ǥ⤤����--fontsize�Ǥ��ޤ���
-?Makefile�˴��ڤ��ʤ���`�����ӳ�����`�뤬����
-���i�������⤽�Υ�`��ϴ��ڤ��ʤ�.po��msgfmt���褦�Ȥ���Τǡ�
-��xkanon-071209.tar.gz����ե���������Ï��ä�������Ŀ�ˡ�
-?UI��Ӣ�Z�ˤʤ�
-��gettext�Ȥ�.mo�ܤ����˼���롣
-��_�J������
+既知の問題としては
+*音が出ない。
+　--enable-alsaしてみたら途中でフリーズしたりする
+*HiDPI環境だとフォントサイズがおかしい
+　どうでもいい。--fontsizeでごまかす
+*Makefileに存在しないルールを呼び出すルールがある
+　謎。しかもそのルールは存在しない.poをmsgfmtしようとするので、
+　xkanon-071209.tar.gzからファイルを引っ張って来る羽目に。
+*UIが英語になる
+　gettextとか.mo周りだと思われる。
+を確認した。
 
-�Ȥꤢ�������Ӥ���Τ�ֱ�����ˤ��ʤ����ʩ`��˼����������
+とりあえず起動するので直せる人いないかなーと思い書いた。
 
 
 
